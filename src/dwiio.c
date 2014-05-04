@@ -49,12 +49,13 @@ char* readFileAsStringFully(const char *filename){
 		char *fullPath = getAbsolutePath(filename);
 		int charNum = getFileSize(fullPath)+1;
 		int size = sizeof(char) * charNum;
-		data = createEmptyString(size);
+		data = calloc(charNum, sizeof(char));
 		FILE *file = fopen(fullPath, "r");
 		if(file != NULL)
 			fread(data, size, 1, file);
 
 		fclose(file);
+		free(fullPath);
 	}
 	return data;
 }

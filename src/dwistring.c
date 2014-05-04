@@ -10,12 +10,15 @@
 char* concatAll(const int num, ...){
 	va_list argp;
 	char* result = NULL;
-	char *temp;
+	char *temp = NULL;
+	char *temp2 = NULL;
 	int i = 0;
 	va_start(argp, num);
 	for(i=0;i<num;i++){
 		temp = va_arg(argp, char *);
+		temp2 = result;
 		result = concat(result,temp);
+		free(temp2);
 	}
 	va_end(argp);
 	return result;
@@ -23,7 +26,7 @@ char* concatAll(const int num, ...){
 
 char* concat(const char* first, const char* second){
 	int targetLen =  getStringLength(first) + getStringLength(second) + 1;
-	char *target = createEmptyString(targetLen);
+	char *target = calloc(targetLen,sizeof(char));
 	if(target != NULL){
 		if(first != NULL)
 			strcat(target,first);
@@ -36,11 +39,4 @@ char* concat(const char* first, const char* second){
 
 int getStringLength(const char* string){
 	return string != NULL ? strlen(string) : 0;
-}
-
-char* createEmptyString(const int characterNum){
-	int memoryLength = sizeof(char) * characterNum;
-	char *target = malloc(memoryLength);
-	memset(target,0,memoryLength);
-	return target;
 }
