@@ -25,3 +25,6 @@
 .cproject
 .project
 .settings/
+
+Debug/dwilib
+Release/dwilib
