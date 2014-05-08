@@ -79,6 +79,7 @@ void test_dwiio_read_file_as_string_wrong_path(void){
 }
 
 int main(void){
+
 	test_dwistring_concat();
 	test_dwistring_concat_null();
 	test_dwistring_concat_both_null();

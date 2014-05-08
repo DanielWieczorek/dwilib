@@ -23,19 +23,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: dwilib
+all: libdwilib.dylib
 
 # Tool invocations
-dwilib: $(OBJS) $(USER_OBJS)
+libdwilib.dylib: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MacOS X C Linker'
-	gcc  -o "dwilib" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o "libdwilib.dylib" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) dwilib
+	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) libdwilib.dylib
 	-@echo ' '
 
 .PHONY: all clean dependents

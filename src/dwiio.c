@@ -6,11 +6,6 @@
  */
 
 #include "dwiio.h"
-#include <stdio.h>
-#include <sys/stat.h>
-#include <stdlib.h>
-#include "dwistring.h"
-#include <unistd.h>
 
 static const char* bannerName = "/src/dwilib.banner";
 
@@ -27,7 +22,7 @@ char* getBannerData(){
 }
 
 
-int getFileSize(const char *filename){
+off_t getFileSize(const char *filename){
 	struct stat info;
 	stat(filename, &info);
 	return info.st_size;
@@ -47,8 +42,8 @@ char* readFileAsStringFully(const char *filename){
 	char *data = NULL;
 	if(filename != NULL){
 		char *fullPath = getAbsolutePath(filename);
-		int charNum = getFileSize(fullPath)+1;
-		int size = sizeof(char) * charNum;
+		off_t charNum = getFileSize(fullPath)+1;
+		off_t size = sizeof(char) * charNum;
 		data = calloc(charNum, sizeof(char));
 		FILE *file = fopen(fullPath, "r");
 		if(file != NULL)

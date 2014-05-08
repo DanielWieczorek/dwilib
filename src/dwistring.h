@@ -7,8 +7,9 @@
 
 #ifndef DWI_STRING_H_
 #define DWI_STRING_H_
+#include "dwilib.h"
 
+char* concatAll(const uint32_t num, ...);
 char* concat(const char* first, const char* second);
-int getStringLength(const char* string);
-char* concatAll(const int num, ...);
+size_t getStringLength(const char* string);
 #endif /* DWI_STRING_H_ */

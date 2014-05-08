@@ -7,8 +7,10 @@
 
 #ifndef DWIIO_H_
 #define DWIIO_H_
+#include "dwilib.h"
+
 void printBanner(void);
-int getFileSize(const char *filename);
+off_t getFileSize(const char *filename);
 char* getAbsolutePath(const char* relativePath);
 char* readFileAsStringFully(const char *filename);
 #endif /* DWIIO_H_ */
