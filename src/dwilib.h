@@ -1,8 +1,6 @@
-/*
- * dwilib.h
- *
- *  Created on: 03.05.2014
- *      Author: Daniel Wieczorek
+/**
+ * @file dwilib.h
+ * @brief my personal library to make various  tasks easier in the future (and practicing some c now :). This is the main file to include.
  */
 
 

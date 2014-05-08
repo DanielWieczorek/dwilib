@@ -1,10 +1,7 @@
-/*
- * dwi_string.h
- *
- *  Created on: 03.05.2014
- *      Author: Daniel Wieczorek
+/**
+ * @file dwistring.h
+ * @brief small module to make the string operations easier.
  */
-
 #ifndef DWI_STRING_H_
 #define DWI_STRING_H_
 #include "dwilib.h"

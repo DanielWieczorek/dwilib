@@ -78,8 +78,9 @@ void test_dwiio_read_file_as_string_wrong_path(void){
 	free(result);
 }
 
-int main(void){
 
+int main(void){
+	printBanner();
 	test_dwistring_concat();
 	test_dwistring_concat_null();
 	test_dwistring_concat_both_null();
