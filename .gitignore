@@ -23,10 +23,20 @@
 *.hex
 *.d
 
+# mostly Eclipse
 .cproject
 .project
 .settings/
-
 Debug/dwilib
 Release/dwilib
 doc
+
+
+# Netbeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
