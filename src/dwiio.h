@@ -11,4 +11,5 @@ void printBanner(void);
 off_t getFileSize(const char *filename);
 char* getAbsolutePath(const char* relativePath);
 char* readFileAsStringFully(const char *filename);
+char* readBytesFromFile(const char *filename, off_t bytes);
 #endif /* DWIIO_H_ */

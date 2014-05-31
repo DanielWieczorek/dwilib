@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include "dwistring.h"
 #include "dwiio.h"
-
+#include "dwiint.h"
 #ifndef DWILIB_H_
 #define DWILIB_H_
 

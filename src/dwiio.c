@@ -32,9 +32,6 @@ char* getBannerData(){
 /**
  * @brief retrieves the size of the given file in bytes.
  *
- * Not the most useful function but I was in the mood to do some ANSI art.
- * And it was a good way to test file io. :)
- *
  * @param filename name of the file to retrieve the size of.
  *
  * @return size of the given file in bytes, or 0 if the filename is NULL
@@ -84,16 +81,35 @@ char* readFileAsStringFully(const char *filename){
 	char *data = NULL;
 	if(filename != NULL){
 		char *fullPath = getAbsolutePath(filename);
-		off_t charNum = getFileSize(fullPath)+1;
+		off_t charNum = getFileSize(fullPath);
 		off_t size = sizeof(char) * charNum;
-		data = calloc(charNum, sizeof(char));
+                data = readBytesFromFile(fullPath,size);
+                data = concat(data,"\0");
+		free(fullPath);
+                
+	}
+	return data;
+}
+
+
+/**
+ * @brief reads the given number of bytes from the given file and returns them as char array.
+ *
+ * @param filename name of to read from. The path can be relative or absolute.
+ * @param bytes the number of bytes to read
+ * @return returns read bytes as char array. There is no null termination done!
+ */
+char* readBytesFromFile(const char *filename, off_t bytes){
+    char *data = NULL;
+	if(filename != NULL && bytes > 0){
+		char *fullPath = getAbsolutePath(filename);
+		data = calloc(bytes, 1);
 		FILE *file = fopen(fullPath, "r");
 		if(file != NULL)
-			fread(data, size, 1, file);
+			fread(data, bytes, 1, file);
 
 		fclose(file);
 		free(fullPath);
 	}
 	return data;
 }
-

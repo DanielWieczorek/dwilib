@@ -43,6 +43,24 @@ void test_dwiio_read_file_as_string_wrong_path(void){
 	free(result);
 }
 
+void test_read_bytes_from_file_null(void){
+	char* result = readBytesFromFile(NULL,0);
+	CU_ASSERT_EQUAL(result, NULL);
+	free(result);
+}
+
+void test_read_bytes_from_file_zero(void){
+	char* result = readBytesFromFile("testdata/readfile.test",0);
+	CU_ASSERT_EQUAL(result, NULL);
+        free(result);
+}
+
+void test_read_bytes_from_file_positive(void){
+	char* result = readBytesFromFile("testdata/readfile.test",3);
+	CU_ASSERT_NSTRING_EQUAL(result, "foo",3);
+        free(result);
+}
+
 
 int main() {
     CU_pSuite pSuite = NULL;
@@ -61,7 +79,10 @@ int main() {
     /* Add the tests to the suite */
     if ((NULL == CU_add_test(pSuite, "test_dwiio_read_file_as_string_relative", test_dwiio_read_file_as_string_relative)) ||
             (NULL == CU_add_test(pSuite, "test_dwiio_read_file_as_string_null", test_dwiio_read_file_as_string_null))||
-            (NULL == CU_add_test(pSuite, "test_dwiio_read_file_as_string_wrong_path", test_dwiio_read_file_as_string_wrong_path))) {
+            (NULL == CU_add_test(pSuite, "test_dwiio_read_file_as_string_wrong_path", test_dwiio_read_file_as_string_wrong_path))||
+            (NULL == CU_add_test(pSuite, "test_read_bytes_from_file_null", test_read_bytes_from_file_null))||
+            (NULL == CU_add_test(pSuite, "test_read_bytes_from_file_zero", test_read_bytes_from_file_zero))||
+            (NULL == CU_add_test(pSuite, "test_read_bytes_from_file_positive", test_read_bytes_from_file_positive))) {
         CU_cleanup_registry();
         return CU_get_error();
     }
