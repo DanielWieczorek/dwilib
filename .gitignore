@@ -31,6 +31,8 @@ Debug/dwilib
 Release/dwilib
 doc
 
+#OSX
+.DS_Store
 
 # Netbeans
 nbproject/private/
@@ -40,3 +42,4 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+.dep.inc
