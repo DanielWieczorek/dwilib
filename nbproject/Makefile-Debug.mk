@@ -66,26 +66,28 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT}: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.a: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -dynamiclib -install_name libdwilib.${CND_DLIB_EXT} -fPIC
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.a
+	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.a ${OBJECTFILES} 
+	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.a
 
 ${OBJECTDIR}/src/dwiint.o: src/dwiint.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiint.o src/dwiint.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiint.o src/dwiint.c
 
 ${OBJECTDIR}/src/dwiio.o: src/dwiio.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiio.o src/dwiio.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiio.o src/dwiio.c
 
 ${OBJECTDIR}/src/dwistring.o: src/dwistring.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwistring.o src/dwistring.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwistring.o src/dwistring.c
 
 # Subprojects
 .build-subprojects:
@@ -108,19 +110,19 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/test/dwistring_test.o ${OBJECTFILES:%.o=%_no
 ${TESTDIR}/test/dwiint_test.o: test/dwiint_test.c 
 	${MKDIR} -p ${TESTDIR}/test
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/test/dwiint_test.o test/dwiint_test.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/test/dwiint_test.o test/dwiint_test.c
 
 
 ${TESTDIR}/test/dwiio_test.o: test/dwiio_test.c 
 	${MKDIR} -p ${TESTDIR}/test
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/test/dwiio_test.o test/dwiio_test.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/test/dwiio_test.o test/dwiio_test.c
 
 
 ${TESTDIR}/test/dwistring_test.o: test/dwistring_test.c 
 	${MKDIR} -p ${TESTDIR}/test
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/test/dwistring_test.o test/dwistring_test.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/test/dwistring_test.o test/dwistring_test.c
 
 
 ${OBJECTDIR}/src/dwiint_nomain.o: ${OBJECTDIR}/src/dwiint.o src/dwiint.c 
@@ -131,7 +133,7 @@ ${OBJECTDIR}/src/dwiint_nomain.o: ${OBJECTDIR}/src/dwiint.o src/dwiint.c
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.c) -g -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiint_nomain.o src/dwiint.c;\
+	    $(COMPILE.c) -g -std=c11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiint_nomain.o src/dwiint.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/dwiint.o ${OBJECTDIR}/src/dwiint_nomain.o;\
 	fi
@@ -144,7 +146,7 @@ ${OBJECTDIR}/src/dwiio_nomain.o: ${OBJECTDIR}/src/dwiio.o src/dwiio.c
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.c) -g -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiio_nomain.o src/dwiio.c;\
+	    $(COMPILE.c) -g -std=c11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwiio_nomain.o src/dwiio.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/dwiio.o ${OBJECTDIR}/src/dwiio_nomain.o;\
 	fi
@@ -157,7 +159,7 @@ ${OBJECTDIR}/src/dwistring_nomain.o: ${OBJECTDIR}/src/dwistring.o src/dwistring.
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.c) -g -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwistring_nomain.o src/dwistring.c;\
+	    $(COMPILE.c) -g -std=c11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dwistring_nomain.o src/dwistring.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/dwistring.o ${OBJECTDIR}/src/dwistring_nomain.o;\
 	fi
@@ -176,7 +178,7 @@ ${OBJECTDIR}/src/dwistring_nomain.o: ${OBJECTDIR}/src/dwistring.o src/dwistring.
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.a
 
 # Subprojects
 .clean-subprojects:

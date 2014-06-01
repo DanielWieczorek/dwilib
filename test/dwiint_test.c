@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../src/dwilib.h"
+#include "../src/dwiint.h"
 #include <CUnit/Basic.h>
 
 /*

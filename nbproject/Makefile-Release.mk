@@ -62,15 +62,15 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lcunit
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f4
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT}: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -dynamiclib -install_name libdwilib.${CND_DLIB_EXT} -fPIC
+${TESTDIR}/TestFiles/f4: ${OBJECTFILES}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c} -o ${TESTDIR}/TestFiles/f4 ${OBJECTFILES} ${LDLIBSOPTIONS} -dynamiclib -install_name f4 -fPIC
 
 ${OBJECTDIR}/src/dwiint.o: src/dwiint.c 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -176,7 +176,7 @@ ${OBJECTDIR}/src/dwistring_nomain.o: ${OBJECTDIR}/src/dwistring.o src/dwistring.
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdwilib.${CND_DLIB_EXT}
+	${RM} ${TESTDIR}/TestFiles/f4
 
 # Subprojects
 .clean-subprojects:

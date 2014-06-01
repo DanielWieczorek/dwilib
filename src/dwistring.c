@@ -67,3 +67,28 @@ char* concat(const char* first, const char* second){
 size_t getStringLength(const char* string){
 	return string != NULL ? strlen(string) : 0;
 }
+
+
+/**
+ * @brief Checks if the given string contains the given character
+ *
+ * returns the result of strlen(string) if the input string is not null. 0 is returned otherwise.
+ *
+ * @param string string to search in.
+ * @param searched character to search in the string
+ * @returns true if the character was found in the string. False is returned otherwise.
+ *
+ */
+bool containsChar(const char* string, const char searched){
+    int i=0;
+    size_t characterNum = getStringLength(string); 
+    bool result = false;
+    for(i=0;characterNum;i++)
+        if(string[i] == searched){
+            result = true;
+            break;
+        }
+    
+    return result;
+            
+}

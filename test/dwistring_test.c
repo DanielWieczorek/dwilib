@@ -44,7 +44,7 @@ void test_concat_null(void){
 void test_concat_both_null(void);
 void test_concat_both_null(void){
 	char* result = concat(NULL, NULL);
-	CU_ASSERT(strcmp(result, "") == 0);
+	CU_ASSERT_STRING_EQUAL(result, "");
 	free(result);
 }
 
@@ -54,7 +54,7 @@ void test_concatall_three_values(void){
 	char* second = "bar";
 	char* third = "42";
 	char* result = concatAll(3,first, second, third);
-	CU_ASSERT(strcmp(result, "foobar42") == 0);
+	CU_ASSERT_STRING_EQUAL(result, "foobar42");
 	free(result);
 }
 
@@ -65,8 +65,32 @@ void test_concatall_first_null(void){
 	char* second = "bar";
 	char* third = "42";
 	char* result = concatAll(3,first, second, third);
-	CU_ASSERT(strcmp(result, "bar42") == 0);
+	CU_ASSERT_STRING_EQUAL(result, "bar42");
 	free(result);
+}
+
+
+void test_contains_char_positive(void);
+void test_contains_char_positive(void){
+	char* testString = "foobar";
+	bool result = containsChar(testString, 'f');
+	CU_ASSERT_TRUE(result);
+}
+
+
+void test_contains_char_null(void);
+void test_contains_char_null(void){
+	char* testString = NULL;
+	bool result = containsChar(testString, 'f');
+	CU_ASSERT_FALSE(result);
+}
+
+
+void test_contains_char_empty(void);
+void test_contains_char_empty(void){
+	char* testString = "";
+	bool result = containsChar(testString, 'f');
+	CU_ASSERT_FALSE(result);
 }
 
 
@@ -89,6 +113,9 @@ int main() {
             (NULL == CU_add_test(pSuite, "test_concat_both_null", test_concat_both_null))||
             (NULL == CU_add_test(pSuite, "test_concat_both_null", test_concat_both_null))||
             (NULL == CU_add_test(pSuite, "test_concatall_three_values", test_concatall_three_values))||
+            (NULL == CU_add_test(pSuite, "test_contains_char_positive", test_contains_char_positive))||
+            (NULL == CU_add_test(pSuite, "test_contains_char_null", test_contains_char_null))||
+            (NULL == CU_add_test(pSuite, "test_contains_char_empty", test_contains_char_empty))||
             (NULL == CU_add_test(pSuite, "test_concatall_first_null", test_concatall_first_null))) {
         CU_cleanup_registry();
         return CU_get_error();
