@@ -92,3 +92,10 @@ bool containsChar(const char* string, const char searched){
     return result;
             
 }
+
+
+void nullString(char* string){
+    int size = getStringLength(string);
+    if(size)
+        memset(string,'\0',size);
+}

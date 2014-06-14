@@ -93,6 +93,23 @@ void test_contains_char_empty(void){
 	CU_ASSERT_FALSE(result);
 }
 
+void test_null_string_nullpointer(void);
+void test_null_string_nullpointer(void){
+	char* testString = NULL;
+        
+	nullString(testString);
+	CU_ASSERT_EQUAL(testString, NULL);
+}
+
+void test_null_string_normal(void);
+void test_null_string_normal(void){
+	char* testString = calloc(sizeof(char),4);
+        testString = concat( "foo", testString);
+        char* desired = calloc(sizeof(char),4);
+	nullString(testString);
+	CU_ASSERT_TRUE(memcmp(testString, desired,4)==0);
+}
+
 
 int main() {
     CU_pSuite pSuite = NULL;
@@ -116,6 +133,8 @@ int main() {
             (NULL == CU_add_test(pSuite, "test_contains_char_positive", test_contains_char_positive))||
             (NULL == CU_add_test(pSuite, "test_contains_char_null", test_contains_char_null))||
             (NULL == CU_add_test(pSuite, "test_contains_char_empty", test_contains_char_empty))||
+            (NULL == CU_add_test(pSuite, "test_null_string_normal", test_null_string_normal))||
+            (NULL == CU_add_test(pSuite, "test_null_string_nullpointer", test_null_string_nullpointer))||
             (NULL == CU_add_test(pSuite, "test_concatall_first_null", test_concatall_first_null))) {
         CU_cleanup_registry();
         return CU_get_error();
