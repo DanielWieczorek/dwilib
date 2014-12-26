@@ -19,6 +19,7 @@
 #include "dwistring.h"
 #include "dwiio.h"
 #include "dwiint.h"
+#include "dwiarray.h"
 
 
 #endif /* DWILIB_H_ */

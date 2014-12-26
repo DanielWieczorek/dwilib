@@ -1,6 +1,6 @@
 /*
  * File:   dwiint_test.c
- * Author: Rhox
+ * Author: Daniel Wieczorek
  *
  * Created on 31.05.2014, 14:26:26
  */
